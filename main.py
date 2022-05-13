@@ -11,8 +11,10 @@ db = mysql.connector.connect(
     user=app.config['DB_USER'],
     password=app.config['DB_PASSWORD'],
     database=app.config['DB_NAME'],
-    port=app.config['DB_PORT']
+    port=3306
 )
+
+print(isinstance(app.config['DB_PORT'], int))
 
 cursor = db.cursor(buffered=True)
 
