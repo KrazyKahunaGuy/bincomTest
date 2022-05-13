@@ -1,4 +1,3 @@
-from unittest import result
 from flask import Flask, render_template, request
 import mysql.connector
 
@@ -11,7 +10,8 @@ db = mysql.connector.connect(
     host=app.config['DB_HOST'],
     user=app.config['DB_USER'],
     password=app.config['DB_PASSWORD'],
-    database=app.config['DB_NAME']
+    database=app.config['DB_NAME'],
+    port=app.config['DB_PORT']
 )
 
 cursor = db.cursor(buffered=True)
