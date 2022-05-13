@@ -1,0 +1,21 @@
+QUESTION 2
+<form>
+  <label for="lga">Select LGA:</label>
+  {% if lga_id == None %}
+  <select name="lga" id="lga">
+    {% for lga in lgas %}
+    <option value="{{lga[0]}}">{{lga[1]}}</option>
+    {% endfor %}
+  </select>
+  {% else %}
+  <select name="lga" id="lga">
+    {% for lga in lgas %} {% if lga_name == lga[1] %}
+    <option value="{{lga[0]}}" selected>{{lga[1]}}</option>
+    {% else %}
+    <option value="{{lga[0]}}">{{lga[1]}}</option>
+    {% endif %} {% endfor %}
+  </select>
+  <p>RESULT: {{result}}</p>
+  {% endif %}
+  <input type="submit" value="Get Result for this LGA" />
+</form>

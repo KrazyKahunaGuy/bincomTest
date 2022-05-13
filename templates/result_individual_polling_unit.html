@@ -1,0 +1,23 @@
+QUESTION 1
+<h1>RESULTS FOR POLLING UNIT WITH ID #{{polling_unit_id}}</h1>
+<form>
+  <label for="{{polling_unit}}">Select Polling unit</label>
+  <select name="polling_unit">
+    {% for polling_unit in polling_units %}
+    <option value="{{polling_unit}}">{{polling_unit}}</option>
+    {% endfor %}
+  </select>
+  <input type="submit" value="Get Result for this Polling Unit" />
+</form>
+<table>
+  <tr>
+    <th>Party</th>
+    <th>Votes</th>
+  </tr>
+  {% for item in result %}
+  <tr>
+    <td>{{item[0]}}</td>
+    <td>{{item[1]}}</td>
+  </tr>
+  {% endfor %}
+</table>

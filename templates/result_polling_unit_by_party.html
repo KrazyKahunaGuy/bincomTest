@@ -1,0 +1,33 @@
+QUESTION 3
+<h1>Results for {{party_abbreviation}}</h1>
+<form>
+  <label for="party">Select Party:</label>
+  {% if party_id == None %}
+  <select name="party" id="party">
+    {% for party in parties %}
+    <option value="{{party[0]}}">{{party[1]}}</option>
+    {% endfor %}
+  </select>
+  {% else %}
+  <select name="party" id="party">
+    {% for party in parties %} {% if party_abbreviation == party %}
+    <option value="{{party}}" selected>{{party}}</option>
+    {% else %}
+    <option value="{{party}}">{{party}}</option>
+    {% endif %} {% endfor %}
+  </select>
+  {% endif %}
+  <input type="submit" value="Get Result for this Party" />
+</form>
+<table>
+  <tr>
+    <th>Polling unit</th>
+    <th>Votes</th>
+  </tr>
+  {% for item in result %}
+  <tr>
+    <td>{{item[0]}}</td>
+    <td>{{item[1]}}</td>
+  </tr>
+  {% endfor %}
+</table>
