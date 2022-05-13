@@ -1,0 +1,35 @@
+QUESTION 1
+<h1>RESULTS FOR POLLING UNIT WITH ID #{{polling_unit_id}}</h1>
+<form>
+  <label for="polling_unit">Select LGA:</label>
+  {% if polling_unit_id == None %}
+  <select name="polling_unit" id="polling_unit">
+    {% for polling_unit in polling_units %}
+    <option value="{{polling_unit}}">{{polling_unit}}</option>
+    {% endfor %}
+  </select>
+  {% else %}
+  <select name="polling_unit" id="polling_unit">
+    {% for polling_unit in polling_units %} {% if polling_unit_current ==
+    polling_unit %}
+    <option value="{{polling_unit}}" selected>{{polling_unit}}</option>
+    {% else %}
+    <option value="{{polling_unit}}">{{polling_unit}}</option>
+    {% endif %} {% endfor %}
+  </select>
+  <p>RESULT: {{result}}</p>
+  {% endif %}
+  <input type="submit" value="Get Result for this LGA" />
+</form>
+<table>
+  <tr>
+    <th>Party</th>
+    <th>Votes</th>
+  </tr>
+  {% for item in result %}
+  <tr>
+    <td>{{item[0]}}</td>
+    <td>{{item[1]}}</td>
+  </tr>
+  {% endfor %}
+</table>
