@@ -1,0 +1,3 @@
+# bincomTest
+
+Bincom test solutions
